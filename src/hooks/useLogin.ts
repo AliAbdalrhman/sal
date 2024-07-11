@@ -4,7 +4,7 @@ import { setLocalStorageToken } from "../utils/localStorageToken";
 import { useNavigate } from "react-router-dom";
 
 function login(loginData: LoginData) {
-  return axiosInstance.post("/login", loginData);
+  return axiosInstance.post<LoginResponse>("/login", loginData);
 }
 
 const useLogin = () => {
@@ -15,6 +15,9 @@ const useLogin = () => {
     mutationFn: login,
     onSuccess: (data) => {
       setLocalStorageToken(data.data.token);
+      axiosInstance.defaults.headers.common[
+        "Authorization"
+      ] = `Bearer ${data.data.token}`;
       navigate("/");
     },
   });
