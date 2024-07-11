@@ -3,6 +3,7 @@ import colors from "./foundations/colors";
 import fonts from "./foundations/fonts";
 import Button from "./components/button";
 import Input from "./components/input";
+import Tabs from "./components/tabs";
 
 const theme = extendTheme({
   colors,
@@ -10,6 +11,7 @@ const theme = extendTheme({
   components: {
     Button,
     Input,
+    Tabs,
   },
 });
 

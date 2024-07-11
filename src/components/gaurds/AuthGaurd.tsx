@@ -6,7 +6,7 @@ function AuthGaurd() {
   const isLogged = hasLocalStorageToken();
 
   if (!isLogged) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/login" replace />;
   }
 
   return <Outlet />;

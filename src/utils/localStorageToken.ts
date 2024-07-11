@@ -7,7 +7,7 @@ function setLocalStorageToken(token: string) {
   return localStorage.setItem(TOKEN_KEY, token);
 }
 function hasLocalStorageToken() {
-  return !!getLocalStorageToken;
+  return !!getLocalStorageToken();
 }
 
 export { getLocalStorageToken, setLocalStorageToken, hasLocalStorageToken };

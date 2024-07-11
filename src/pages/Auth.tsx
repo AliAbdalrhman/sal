@@ -54,12 +54,12 @@ const Auth = () => {
           <Tabs
             index={tabIndex}
             onChange={handleTabsChange}
-            variant="soft-rounded"
+            variant="solid-rounded-two-tabs"
             colorScheme="green"
           >
             <TabList>
-              <Tab>Sign In</Tab>
-              <Tab>Register</Tab>
+              <Tab>Sign in</Tab>
+              <Tab>Sign up</Tab>
             </TabList>
             <TabPanels>
               <TabPanel>
