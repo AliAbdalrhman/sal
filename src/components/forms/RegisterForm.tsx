@@ -10,8 +10,8 @@ import {
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SubmitHandler, useForm } from "react-hook-form";
 import * as yup from "yup";
-import useLogin from "../../hooks/useLogin";
 import { GitHubIcon } from "../icons/GitHubIcon";
+import useRegister from "../../hooks/useRegister";
 
 const schema = yup.object({
   first_name: yup.string().required(),
@@ -24,7 +24,7 @@ const schema = yup.object({
 type LoginData = yup.InferType<typeof schema>;
 
 export default function RegisterForm() {
-  const { mutate: login, isPending } = useLogin();
+  const { mutate: signUp, isPending } = useRegister();
   const {
     register,
     formState: { errors },
@@ -32,7 +32,7 @@ export default function RegisterForm() {
   } = useForm<LoginData>({ resolver: yupResolver(schema) });
 
   const onSubmit: SubmitHandler<LoginData> = (data) => {
-    login(data);
+    signUp(data);
   };
 
   return (
