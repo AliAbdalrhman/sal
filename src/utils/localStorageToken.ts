@@ -6,8 +6,8 @@ function getLocalStorageToken() {
 function setLocalStorageToken(token: string) {
   return localStorage.setItem(TOKEN_KEY, token);
 }
-function hasLocalStorageToken() {
-  return !!getLocalStorageToken();
+function removeLocalStorageToken() {
+  localStorage.removeItem(TOKEN_KEY);
 }
 
-export { getLocalStorageToken, setLocalStorageToken, hasLocalStorageToken };
+export { getLocalStorageToken, setLocalStorageToken, removeLocalStorageToken };

@@ -1,7 +1,8 @@
 import { useMutation } from "@tanstack/react-query";
 import axiosInstance from "../api/index";
-import { setLocalStorageToken } from "../utils/localStorageToken";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import AuthContext from "../components/context/AuthContext";
 
 function login(loginData: LoginData) {
   return axiosInstance.post<LoginResponse>("/login", loginData);
@@ -9,15 +10,13 @@ function login(loginData: LoginData) {
 
 const useLogin = () => {
   const navigate = useNavigate();
+  const { onLogin } = useContext(AuthContext);
 
   return useMutation({
     mutationKey: ["login"],
     mutationFn: login,
     onSuccess: (data) => {
-      setLocalStorageToken(data.data.token);
-      axiosInstance.defaults.headers.common[
-        "Authorization"
-      ] = `Bearer ${data.data.token}`;
+      onLogin(data.data.token);
       navigate("/");
     },
   });
