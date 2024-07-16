@@ -14,6 +14,7 @@ function setAxiosToken(token?: string) {
 }
 function AuthContextProvider({ children }: { children: ReactNode }) {
   const [token, setToken] = useState<string | null>(null);
+  const [isInitialized, setIsInitialized] = useState(false);
   const isAuth = !!token;
 
   useEffect(() => {
@@ -22,6 +23,7 @@ function AuthContextProvider({ children }: { children: ReactNode }) {
       setToken(localStorageToken);
       setAxiosToken(localStorageToken);
     }
+    setIsInitialized(true);
   }, []);
 
   function onLogin(tokenData: string) {
@@ -36,7 +38,7 @@ function AuthContextProvider({ children }: { children: ReactNode }) {
   }
   return (
     <AuthContext.Provider value={{ isAuth, onLogin, onLogout }}>
-      {children}
+      {isInitialized && children}
     </AuthContext.Provider>
   );
 }
