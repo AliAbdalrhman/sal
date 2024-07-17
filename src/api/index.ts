@@ -10,4 +10,5 @@ const axiosInstance = axios.create({
   baseURL: apiURL,
 });
 
+axiosInstance.interceptors.response.use((response) => response.data);
 export default axiosInstance;
