@@ -1,9 +1,10 @@
 import { Outlet } from "react-router-dom";
+import Header from "../Header";
 
 function UserLayout() {
   return (
     <>
-      <header>Header</header>
+      <Header />
       <Outlet />
     </>
   );
