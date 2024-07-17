@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useCallback, useEffect, useState } from "react";
 import axiosInstance from "../../api";
 import {
   getLocalStorageToken,
@@ -31,11 +31,13 @@ function AuthContextProvider({ children }: { children: ReactNode }) {
     setAxiosToken(tokenData);
     setLocalStorageToken(tokenData);
   }
-  function onLogout() {
+
+  const onLogout = useCallback(() => {
     setToken(null);
     setAxiosToken(undefined);
     removeLocalStorageToken();
-  }
+  }, []);
+
   return (
     <AuthContext.Provider value={{ isAuth, onLogin, onLogout }}>
       {isInitialized && children}
