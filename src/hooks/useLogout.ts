@@ -3,7 +3,7 @@ import axiosInstance from "../api/index";
 import useAuthContext from "./useAuthContext";
 
 function logout() {
-  return axiosInstance.post<LoginResponse>("/logout");
+  return axiosInstance.post<never, LoginResponse>("/logout");
 }
 
 const useLogout = () => {

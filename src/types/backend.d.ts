@@ -28,3 +28,8 @@ interface User {
   phone: string;
   username: string;
 }
+
+interface SearchFormProps {
+  showSearch: boolean;
+  setShowSearch: any;
+}

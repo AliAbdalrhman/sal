@@ -5,7 +5,7 @@ import { useContext } from "react";
 import AuthContext from "../components/context/AuthContext";
 
 function login(loginData: LoginData) {
-  return axiosInstance.post<LoginResponse>("/login", loginData);
+  return axiosInstance.post<never, LoginResponse>("/login", loginData);
 }
 
 const useLogin = () => {
@@ -16,7 +16,7 @@ const useLogin = () => {
     mutationKey: ["login"],
     mutationFn: login,
     onSuccess: (data) => {
-      onLogin(data.data.token);
+      onLogin(data.token);
       navigate("/");
     },
   });

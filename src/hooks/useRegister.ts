@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import useAuthContext from "./useAuthContext";
 
 function register(loginData: RegisterData) {
-  return axiosInstance.post<LoginResponse>("/register", loginData);
+  return axiosInstance.post<never, LoginResponse>("/register", loginData);
 }
 
 const useRegister = () => {
@@ -15,7 +15,7 @@ const useRegister = () => {
     mutationKey: ["register"],
     mutationFn: register,
     onSuccess: (data) => {
-      onLogin(data.data.token);
+      onLogin(data.token);
       navigate("/");
     },
   });

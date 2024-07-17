@@ -3,7 +3,7 @@ import axiosInstance from "../api";
 import useAuthContext from "./useAuthContext";
 
 function getUserProfile() {
-  return axiosInstance.get<{ data: User }>("/profile");
+  return axiosInstance.get<never, { data: User }>("/profile");
 }
 
 const useProfileQuery = () => {
