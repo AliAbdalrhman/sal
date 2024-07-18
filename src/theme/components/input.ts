@@ -6,7 +6,7 @@ const input: ComponentStyleConfig = {
       rounded: "full",
       fontSize: "2xl",
       px: 6,
-      boxShadow: "0 4px 4px 0 rgba(0 , 0 , 0 , 0.25)",
+      boxShadow: "0 2px 2px 0 rgba(0 , 0 , 0 , 0.20)",
     },
   },
   variants: {
