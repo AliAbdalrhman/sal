@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axiosInstance from "../api/index";
 import { useToast } from "@chakra-ui/react";
 
-function updateProfile(profileData: Partial<User>) {
+export function updateProfile(profileData: Partial<User>) {
   return axiosInstance.patch<never, { data: User }>("/profile", profileData);
 }
 
