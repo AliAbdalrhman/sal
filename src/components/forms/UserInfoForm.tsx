@@ -20,6 +20,8 @@ const schema = yup.object({
   last_name: yup.string().required(),
   email: yup.string().email(),
   bio: yup.string(),
+  phone: yup.string(),
+  job: yup.string(),
 });
 
 type InfoType = yup.InferType<typeof schema>;
@@ -37,11 +39,13 @@ function UserInfoForm({ onClose }: UserInfoFormProps) {
   } = useForm<InfoType>({
     resolver: yupResolver(schema),
     defaultValues: {
-      username: profileData?.data.username || "",
-      first_name: profileData?.data.first_name || "",
-      last_name: profileData?.data.last_name || "",
-      email: profileData?.data.email || "",
-      bio: profileData?.data.bio || "",
+      username: profileData?.username || "",
+      first_name: profileData?.first_name || "",
+      last_name: profileData?.last_name || "",
+      email: profileData?.email || "",
+      bio: profileData?.bio || "",
+      phone: profileData?.phone || "",
+      job: profileData?.job || "",
     },
   });
 
@@ -55,11 +59,19 @@ function UserInfoForm({ onClose }: UserInfoFormProps) {
       onSubmit={handleSubmit(onSubmit)}
       columns={2}
       spacing="4"
-      sx={{ input: { borderRadius: "lg" } }}
+      sx={{
+        input: { borderRadius: "lg" },
+        label: { color: "gray.500" },
+        fontWeight: "normal",
+      }}
     >
       <FormControl isInvalid={!!errors.username}>
         <FormLabel>Username</FormLabel>
-        <Input {...register("username")} placeholder="Username" />
+        <Input
+          isDisabled={true}
+          {...register("username")}
+          placeholder="Username"
+        />
         <FormErrorMessage>{errors.username?.message}</FormErrorMessage>
       </FormControl>
 
@@ -79,6 +91,18 @@ function UserInfoForm({ onClose }: UserInfoFormProps) {
         <FormLabel>Email</FormLabel>
         <Input type="email" {...register("email")} placeholder="Email" />
         <FormErrorMessage>{errors.email?.message}</FormErrorMessage>
+      </FormControl>
+
+      <FormControl isInvalid={!!errors.phone}>
+        <FormLabel>Phone</FormLabel>
+        <Input type="phone" {...register("phone")} placeholder="Phone" />
+        <FormErrorMessage>{errors.phone?.message}</FormErrorMessage>
+      </FormControl>
+
+      <FormControl isInvalid={!!errors.job}>
+        <FormLabel>Job</FormLabel>
+        <Input type="job" {...register("job")} placeholder="Job" />
+        <FormErrorMessage>{errors.job?.message}</FormErrorMessage>
       </FormControl>
 
       <FormControl isInvalid={!!errors.bio} gridColumn="span 2">

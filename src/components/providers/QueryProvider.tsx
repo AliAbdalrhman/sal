@@ -53,7 +53,13 @@ const QueryProvider = ({ children }: { children: ReactNode }) => {
       },
     });
 
-    const queryClient = new QueryClient({ queryCache, mutationCache });
+    const queryClient = new QueryClient({
+      queryCache,
+      mutationCache,
+      defaultOptions: {
+        queries: { retry: false, refetchOnWindowFocus: false },
+      },
+    });
 
     return queryClient;
   }, [toast, onLogout]);

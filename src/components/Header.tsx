@@ -131,8 +131,8 @@ const ProfileMenu = () => {
     <Menu>
       <MenuButton as={Button} variant="link">
         <Avatar
-          name={profileData?.data.full_name}
-          src={profileData?.data.avatar}
+          name={profileData?.full_name}
+          src={profileData?.avatar}
           size="md"
         />
       </MenuButton>
