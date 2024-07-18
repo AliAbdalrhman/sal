@@ -10,6 +10,7 @@ import AuthPage from "./pages/AuthPage";
 import HomePage from "./pages/HomePage";
 import GuestGaurd from "./components/gaurds/GuestGuard";
 import UserLayout from "./components/layout/UserLayout";
+import ProfilePage from "./pages/ProfilePage";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,6 +24,7 @@ export const router = createBrowserRouter(
         }
       >
         <Route index element={<HomePage />} />
+        <Route path="/profile" element={<ProfilePage />} />
       </Route>
       <Route
         path="/auth"
