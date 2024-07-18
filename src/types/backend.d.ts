@@ -27,6 +27,8 @@ interface User {
   last_name: string;
   phone: string;
   username: string;
+  questions_count: string;
+  answers_count: string;
 }
 
 interface SearchFormProps {

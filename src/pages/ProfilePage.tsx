@@ -109,6 +109,23 @@ const ProfileCard = ({ user }: { user?: User }) => {
       <Text maxW="55ch" color="#536471">
         {user?.bio}
       </Text>
+      <HStack
+        spacing="8"
+        my="4"
+        fontSize="sm"
+        fontWeight="500"
+        justifyContent="center"
+        color="#536471"
+      >
+        <HStack>
+          <Text fontWeight="600">{user?.questions_count}</Text>
+          <Text color="#A1A2A3">Questions</Text>
+        </HStack>
+        <HStack>
+          <Text fontWeight="600">{user?.answers_count}</Text>
+          <Text color="#A1A2A3">Answers</Text>
+        </HStack>
+      </HStack>
     </>
   );
 };
