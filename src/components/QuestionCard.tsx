@@ -15,11 +15,13 @@ import DownArrowIcon from "../components/icons/DownArrowIcon";
 import ShareIcon from "../components/icons/ShareIcon";
 
 import ActionButton from "../components/shared/ActionButton";
+import { TimeAgo } from "./shared/TimeAgo";
+import { OptionsIcon } from "./icons/OptionsIcon";
 
 const QuestionCard = () => {
   return (
     <>
-      <Card>
+      <Card size={{ base: "sm", md: "md" }} borderRadius="2xl" boxShadow="md">
         <CardHeader>
           <Flex gap="4">
             <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
@@ -35,9 +37,11 @@ const QuestionCard = () => {
               </Box>
             </Flex>
             <IconButton
-              variant="ghost"
+              variant="unstyled"
+              minW="auto"
               colorScheme="gray"
               aria-label="See menu"
+              icon={<OptionsIcon />}
             />
           </Flex>
         </CardHeader>
@@ -49,22 +53,14 @@ const QuestionCard = () => {
           </Text>
         </CardBody>
 
-        <CardFooter
-          justify="space-between"
-          flexWrap="wrap"
-          sx={{
-            "& > button": {
-              minW: "136px",
-            },
-          }}
-        >
+        <CardFooter justify="space-between" alignItems="center">
           <ButtonGroup variant="unstyled" spacing="6">
             <ActionButton Icon={<UpArrowIcon />} count="12" isFilled={true} />
             <ActionButton Icon={<DownArrowIcon />} count="2" isFilled={false} />
             <ActionButton Icon={<ShareIcon />} count="4" isFilled={true} />
           </ButtonGroup>
           <Text color="#707070" fontSize="md">
-            19/7/2024
+            <TimeAgo dateString={new Date().toDateString()} />
           </Text>
         </CardFooter>
       </Card>

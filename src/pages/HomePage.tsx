@@ -4,7 +4,7 @@ import QuestionCard from "../components/QuestionCard";
 function HomePage() {
   return (
     <>
-      <Container maxW="container.md" py="8">
+      <Container maxW="container.md" py="8" px="10px">
         <QuestionCard />
       </Container>
     </>
