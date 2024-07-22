@@ -18,21 +18,27 @@ import ActionButton from "../components/shared/ActionButton";
 import { TimeAgo } from "./shared/TimeAgo";
 import { OptionsIcon } from "./icons/OptionsIcon";
 
-const QuestionCard = () => {
+interface QuestionCardProps {
+  question: Question;
+}
+const QuestionCard = ({ question }: QuestionCardProps) => {
   return (
     <>
       <Card size={{ base: "sm", md: "md" }} borderRadius="2xl" boxShadow="md">
         <CardHeader>
           <Flex gap="4">
             <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
-              <Avatar name="Segun Adebayo" src="https://bit.ly/sage-adebayo" />
+              <Avatar
+                name={question.user.full_name}
+                src={question.user.avatar}
+              />
 
               <Box>
-                <Text fontSize="lg" fontWeight="600">
-                  Segun Adebayo
+                <Text textTransform="capitalize" fontSize="lg" fontWeight="600">
+                  {question.user.full_name}
                 </Text>
-                <Text fontSize="sm" color="#A1A2A3">
-                  Creator, Chakra UI
+                <Text textTransform="capitalize" fontSize="sm" color="#A1A2A3">
+                  {question.user.job}
                 </Text>
               </Box>
             </Flex>

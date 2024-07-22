@@ -31,6 +31,28 @@ interface User {
   answers_count: string;
 }
 
+interface QuestionsResponse {
+  data: Questions[];
+  meta: {
+    current_page: number;
+    per_page: number;
+    total: number;
+  };
+  search_term: string;
+}
+
+interface Question {
+  answers_count: number;
+  content: string;
+  created_at: string;
+  downvotes: number;
+  id: number;
+  upvotes: number;
+  user: User;
+  // accepted_answer: any;
+  // viewer_vote: any;
+}
+
 interface SearchFormProps {
   showSearch: boolean;
   setShowSearch: any;
